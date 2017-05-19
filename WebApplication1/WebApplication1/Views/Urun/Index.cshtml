@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.Models.Urun>
+
+@{
+    ViewBag.Title = "Ürünler";
+}
+
+<h2>Tüm Ürünler</h2>
+
+<p>
+    @Html.ActionLink("Ürün ekle", "Yeni")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kategori.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategori.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Duzenle", new { id=item.Id }) |
+            @Html.ActionLink("Detaylar", "Detay", new { id=item.Id }) |
+            @Html.ActionLink("Sil", "Sil", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
